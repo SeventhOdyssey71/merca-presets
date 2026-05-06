@@ -37,7 +37,7 @@ export default function Home() {
           </dd>
           <dt>prompts</dt>
           <dd className="mono" style={{ color: 'var(--warn)' }}>
-            untested against production model —{' '}
+            preview generations live · production-model iteration pending —{' '}
             <Link href="/process" style={{ color: 'inherit' }}>
               see process
             </Link>

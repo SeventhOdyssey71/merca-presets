@@ -60,9 +60,28 @@ export function SampleGrid({ presetId }: { presetId: string }) {
             color: filled === total ? 'var(--live)' : 'var(--ink-faint)',
           }}
         >
-          {filled}/{total} tested
+          {filled}/{total} samples
         </span>
       </div>
+      {filled > 0 && (
+        <p
+          style={{
+            margin: '0 0 var(--sp-3)',
+            padding: 'var(--sp-3) var(--sp-4)',
+            background: 'var(--paper-2)',
+            borderLeft: '3px solid var(--warn)',
+            borderRadius: 'var(--r-sm)',
+            fontSize: 'var(--fs-xs)',
+            color: 'var(--ink-soft)',
+          }}
+        >
+          <strong style={{ color: 'var(--ink)' }}>Preview generations.</strong>{' '}
+          These tiles are produced by a public Flux endpoint, not the
+          merca.earth production model. They show the prompt produces coherent
+          style direction; final tuning still needs the production model. See{' '}
+          <a href="/process">/process</a> for the iteration loop.
+        </p>
+      )}
       <div
         style={{
           display: 'grid',

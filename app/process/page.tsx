@@ -57,8 +57,16 @@ export default function ProcessPage() {
         n="06"
         title="Prompt iteration against the production model"
         status="not-done"
-        body="The single biggest piece of remaining work. The brief explicitly asks for 'iterate on the prompt against the actual model' — until that happens, every prompt in the deliverable is a v1.0 first draft, not a tested artefact. Recommended loop: pick three representative presets (one per group), run each at three locations × three zooms, score each output against the audit rubric, revise the prompt for anything that drops below 20/25, repeat. Lock to v1.1 once a preset passes the sweep."
-        next="The team needs to wire the prompts into the merca.earth model harness and run a 9-tile sample sweep per preset (3 locations × 3 zooms). Drop outputs into public/samples/<id>/<archetype>-<zoom>.png — the SampleGrid component on every detail page auto-populates."
+        body="The single biggest piece of remaining work. The brief explicitly asks for 'iterate on the prompt against the actual model' — until that happens, every prompt in the deliverable is a v1.0 first draft, not a tested-against-the-real-model artefact. Recommended loop: pick three representative presets (one per group), run each at three locations × three zooms, score each output against the audit rubric, revise the prompt for anything that drops below 20/25, repeat. Lock to v1.1 once a preset passes the sweep."
+        next="The team needs to wire the prompts into the merca.earth model harness and run the 9-tile sample sweep per preset. Drop outputs into public/samples/<id>/<archetype>-<zoom>.png — the SampleGrid on every detail page auto-populates."
+      />
+
+      <Stage
+        n="06b"
+        title="Preview generations against a public Flux endpoint"
+        status="provisional"
+        body="To get the demo grid out of placeholder state, every preset has been run against a public Pollinations.ai Flux endpoint at 384×384 across all 18 archetype × zoom combinations. These outputs prove the prompts produce coherent style direction (Concrete Brutal renders heavy concrete + fog + single warm light; Acid Topo renders chartreuse-and-hot-pink USGS-cartography-meets-rave; etc.) but they're not the merca.earth production model — colour fidelity, palette enforcement, and zoom-level behaviour will all shift on the real model."
+        next="Treat the previews as direction, not output. Re-run the same prompts on the production model harness. Where production output diverges materially from the preview's intent, revise the prompt rather than the preview."
       />
 
       <Stage
