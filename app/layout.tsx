@@ -40,7 +40,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </a>
               .
             </span>
-            <span className="mono">v0.1.0</span>
+            <span className="mono">v1.0.0</span>
           </footer>
         </div>
       </body>

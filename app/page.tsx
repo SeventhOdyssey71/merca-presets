@@ -25,8 +25,8 @@ export default function Home() {
           <dt>format</dt>
           <dd className="mono">JSON · TS · Markdown</dd>
           <dt>status</dt>
-          <dd className="mono" style={{ color: 'var(--warn)' }}>
-            v0.1 — pending model-side iteration
+          <dd className="mono" style={{ color: 'var(--live)' }}>
+            v1.0 — ready for review
           </dd>
         </div>
       </section>
