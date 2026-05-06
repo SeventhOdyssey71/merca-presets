@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Preset } from '@/lib/types';
 import { PaletteStrip } from './PaletteStrip';
+import { VerificationBadge } from './VerificationBadge';
 
 export function PresetCard({ preset }: { preset: Preset }) {
   return (
@@ -22,7 +23,18 @@ export function PresetCard({ preset }: { preset: Preset }) {
       className="preset-card"
     >
       <div>
-        <h3 style={{ fontSize: 'var(--fs-xl)', marginBottom: 4 }}>{preset.name}</h3>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            gap: 'var(--sp-2)',
+            marginBottom: 4,
+          }}
+        >
+          <h3 style={{ fontSize: 'var(--fs-xl)', margin: 0 }}>{preset.name}</h3>
+          <VerificationBadge status={preset.verification} size="sm" />
+        </div>
         <span
           style={{
             fontFamily: 'var(--font-serif)',

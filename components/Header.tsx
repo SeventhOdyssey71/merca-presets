@@ -48,8 +48,10 @@ export function Header() {
         }}
       >
         <NavLink href="/">Presets</NavLink>
+        <NavLink href="/picker">Picker</NavLink>
         <NavLink href="/grouping">Grouping</NavLink>
         <NavLink href="/audit">Audit</NavLink>
+        <NavLink href="/process">Process</NavLink>
       </nav>
     </header>
   );

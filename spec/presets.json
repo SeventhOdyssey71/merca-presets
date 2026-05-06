@@ -1,47 +1,33 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "version": "0.1.0",
+  "$comment": "Update together with lib/presets.ts. Single source of truth is the TS export; this JSON is the portable mirror.",
+  "version": "1.1.0",
   "groups": [
-    { "id": "atmospheres", "label": "Atmospheres", "blurb": "Set a mood." },
-    { "id": "compositions", "label": "Compositions", "blurb": "Strong graphic POV." },
-    { "id": "documents", "label": "Documents", "blurb": "Place as observed and recorded." },
-    { "id": "pop-surfaces", "label": "Pop Surfaces", "blurb": "Playful, decorative, sign-like." }
+    {
+      "id": "atmospheres",
+      "label": "Atmospheres",
+      "blurb": "Set a mood. When the user knows how the place should feel and doesn't yet care how it looks.",
+      "pickerOrder": 0
+    },
+    {
+      "id": "compositions",
+      "label": "Compositions",
+      "blurb": "Strong graphic point of view. Print-design discipline applied to a place.",
+      "pickerOrder": 1
+    },
+    {
+      "id": "documents",
+      "label": "Documents",
+      "blurb": "Make a place feel observed and recorded — catalogued, photographed, specimen-ized.",
+      "pickerOrder": 2
+    },
+    {
+      "id": "pop-surfaces",
+      "label": "Pop Surfaces",
+      "blurb": "Playful, decorative, sign-like. Make the place feel like a poster about itself.",
+      "pickerOrder": 3
+    }
   ],
   "presets": [
-    {
-      "id": "paris-1924",
-      "name": "Paris 1924",
-      "tagline": "observed from a café",
-      "group": "compositions",
-      "description": "Single-pen ink wash with one signal-color accent and generous white space. The aesthetic of a Saul Steinberg New Yorker cover translated to a place.",
-      "palette": ["#fafaf2", "#0c0c0c", "#aaaaaa", "#c8201f"],
-      "references": [
-        "Saul Steinberg — The View of the World from 9th Avenue (1976)",
-        "George Grosz — ink-and-watercolor street studies, Berlin 1920s",
-        "Jean-Jacques Sempé — Le Petit Nicolas covers"
-      ],
-      "prompt": "A pen-and-ink wash drawing of {location}, in the style of Saul Steinberg's New Yorker covers and George Grosz's 1920s Berlin sketches. Loose hand-drawn ink linework with deliberate gaps. Single signal-red accent on one element only — sign, awning, vehicle. Cool grey ink wash for shadows. Generous ivory paper white around the subject. Composition: subject placed off-centre, the white space framing it. No text. No realistic detail. Wry, observed.",
-      "negativeHints": ["text", "realistic detail", "filled background"],
-      "bestZoomLevels": ["block", "district", "city", "region", "country"],
-      "expectsText": false
-    },
-    {
-      "id": "sosaku-hanga",
-      "name": "Sōsaku Hanga",
-      "tagline": "modernist Japanese woodblock",
-      "group": "compositions",
-      "description": "Distilled to color planes and air. The 20th-century creative print movement — closer to Hiroshi Yoshida than to Hokusai.",
-      "palette": ["#1f3a5f", "#c69b4c", "#0f0f0f", "#b62a26", "#f3e6c7"],
-      "references": [
-        "Hiroshi Yoshida — Sailing Boats (Morning), 1926",
-        "Kawase Hasui — Lake Misaka in Kai Province, 1931",
-        "Tatsuo Mitsuoka — post-war wood prints"
-      ],
-      "prompt": "A modernist Japanese woodblock print of {location}, in the tradition of Hiroshi Yoshida and Kawase Hasui — the sōsaku hanga creative-print movement. Limited mineral palette: indigo, ochre, sumi-black, single touch of vermilion, with cream paper showing through. Strong silhouettes, flat color planes, atmospheric depth from value not detail. Visible wood-grain texture in the pigment. No outlines on figures. No text. Calm, slightly melancholy.",
-      "negativeHints": ["outlines on figures", "text", "high noon lighting"],
-      "bestZoomLevels": ["district", "city", "region", "country"],
-      "expectsText": false
-    },
     {
       "id": "concrete-brutal",
       "name": "Concrete Brutal",
@@ -54,112 +40,11 @@
         "Nadav Kander — Yangtze, The Long River photography",
         "National Theatre London at dusk"
       ],
-      "prompt": "{location} rendered as brutalist architecture under heavy fog. Heavy concrete masses, board-marked surfaces, monumental scale. Single warm pinpoint of distant light — sodium-orange or candle-warm. Cinematic 35mm grain. Tarkovsky-era color grade: desaturated blue-grey base, ink shadows, one warm highlight only. No people. No vegetation. Quiet, monumental, slightly threatening.",
+      "prompt": "{location} rendered as brutalist architecture under heavy fog. No people, no vegetation, no saturated colors. Heavy concrete masses, board-marked surfaces, monumental scale. Single warm pinpoint of distant light — sodium-orange or candle-warm. Cinematic 35mm grain. Tarkovsky-era color grade: desaturated blue-grey base, ink shadows, one warm highlight only. Quiet, monumental, slightly threatening.",
       "negativeHints": ["people", "vegetation", "saturated colors"],
       "bestZoomLevels": ["block", "district", "city"],
-      "expectsText": false
-    },
-    {
-      "id": "risograph-civic",
-      "name": "Risograph Civic",
-      "tagline": "the indie press of municipal life",
-      "group": "pop-surfaces",
-      "description": "Two-color riso print, slightly mis-registered, dot-textured. The aesthetic of municipal pamphlets and arts-council posters.",
-      "palette": ["#ff48b0", "#0078bf", "#fffae8"],
-      "references": [
-        "Hato Press, London — risograph practice",
-        "Mike Perry — Wondering People posters",
-        "The Riso Club Tokyo prints"
-      ],
-      "prompt": "A two-color risograph print of {location}, fluoro pink and cyan only, on cream paper. Slightly mis-registered — the pink layer offset 1–2mm from the cyan. Visible dot-screen texture. Flat shapes, hand-drawn linework. The aesthetic of municipal arts-council pamphlets and indie publishing: friendly, slightly imperfect, civic. Bold composition, single focal subject. No photographic detail. No text. Slight imperfection in registration is desirable.",
-      "negativeHints": ["photographic detail", "text", "perfect registration"],
-      "bestZoomLevels": ["block", "district", "city", "region", "country"],
-      "expectsText": false
-    },
-    {
-      "id": "gouache-field-guide",
-      "name": "Gouache Field Guide",
-      "tagline": "Audubon catalogue plate",
-      "group": "documents",
-      "description": "Flat opaque gouache illustration of a place treated as a specimen. Hand-lettered labels, ruled grid lines.",
-      "palette": ["#ede2c4", "#3d4754", "#5e7a4a", "#a06432", "#c9a85c", "#c43d3d"],
-      "references": [
-        "John James Audubon — Birds of America plates (1827–38)",
-        "Ernst Haeckel — Kunstformen der Natur (1904)",
-        "Beatrix Potter — scientific illustrations of fungi"
-      ],
-      "prompt": "A 19th-century field-guide plate illustration of {location}, treated as a natural specimen. Flat opaque gouache, hand-painted detail without photographic realism. Hand-lettered black ink labels naming up to 3 details. Faint ruled grid lines and a single decorative border. Cream aged-paper background, slight foxing at edges. Palette of muted earth tones with one bright accent on a single feature. Composition: subject centred, framed by negative cream, labels arranged around it like an Audubon plate or Haeckel taxonomy. Calm, observed, scholarly.",
-      "negativeHints": ["photographic realism", "modern type", "neon colors"],
-      "bestZoomLevels": ["block", "district", "city"],
-      "expectsText": true
-    },
-    {
-      "id": "acid-topo",
-      "name": "Acid Topo",
-      "tagline": "USGS map remixed for a 1992 rave flyer",
-      "group": "pop-surfaces",
-      "description": "USGS topographic map crossed with acid-house color discipline. Contour lines as design language.",
-      "palette": ["#f4f1e8", "#a4ff00", "#ff0080", "#00d6ff", "#000000"],
-      "references": [
-        "USGS 7.5-minute topographic quadrangle maps (1960s)",
-        "The Designers Republic — early Warp Records covers",
-        "Aphex Twin — Selected Ambient Works II sleeve"
-      ],
-      "prompt": "A topographic map of {location} in the USGS quadrangle tradition, but recolored as a 1992 acid-house rave flyer. Off-white paper base. Electric chartreuse contour lines at regular intervals. Hot pink for any text or numerals (no real text — just glyph-like marks). Cyan elevation shading in the lowest band. Black hatching for cliffs or built mass. Maintain the clinical precision of a real topographic map — gridlines, scale bar at edge, neat margins. Composition: top-down map view, no perspective. The aesthetic clash of bureaucratic cartography against rave color is the point.",
-      "negativeHints": ["real text", "perspective view", "natural colors"],
-      "bestZoomLevels": ["city", "region", "country", "continent"],
-      "expectsText": false
-    },
-    {
-      "id": "polaroid-diary",
-      "name": "Polaroid Diary",
-      "tagline": "underexposed instant film, single warm light",
-      "group": "documents",
-      "description": "A single instant-film frame, slightly underexposed, white border intact. The aesthetic of a personal travel journal.",
-      "palette": ["#0e0d12", "#e7a35a", "#b85a7a", "#ece5d4"],
-      "references": [
-        "Wim Wenders — Instant Stories (2017) Polaroid catalogue",
-        "William Eggleston — dye-transfer color (in spirit)",
-        "Stephen Shore — Uncommon Places"
-      ],
-      "prompt": "A single Polaroid SX-70 photograph of {location}, slightly underexposed. The classic white SX-70 border framing the image, with very subtle patina. Dominant darkness; one warm amber light source illuminating one element. Shadows hold blue-black, highlights faded toward magenta — the look of dye-instability in old Polaroids. Casual but deliberate framing, slightly off-balance. The whole image reads as a quiet evening moment. No people unless central to the scene. Soft focus.",
-      "negativeHints": ["sharp focus", "high noon", "many light sources"],
-      "bestZoomLevels": ["block", "district", "city"],
-      "expectsText": false
-    },
-    {
-      "id": "indigo-cyanotype",
-      "name": "Indigo Cyanotype",
-      "tagline": "Anna Atkins blueprint, place as botanical specimen",
-      "group": "documents",
-      "description": "Cyanotype contact print. Pure Prussian blue against unbleached paper white. Botanical-specimen energy applied to any place.",
-      "palette": ["#0e2a52", "#f3eddc"],
-      "references": [
-        "Anna Atkins — Photographs of British Algae: Cyanotype Impressions (1843)",
-        "Bertha E. Jaques — cyanotype botanicals",
-        "Christian Marclay — contemporary cyanotypes"
-      ],
-      "prompt": "A cyanotype contact print of {location}, in the manner of Anna Atkins' 1843 algae specimens. Two colors only: deep Prussian blue and paper white, with the high-contrast silhouette behavior of a sun-exposure print. The subject treated as if pressed flat against light-sensitive paper — botanical specimen energy applied to architecture or terrain. Visible brush strokes at edges of the chemistry, slight tonal unevenness. Pure silhouette where appropriate, fine line detail where the form demands it. No text. No grayscale midtones — only blue or white.",
-      "negativeHints": ["grayscale midtones", "text", "color"],
-      "bestZoomLevels": ["block", "district", "city", "region", "country", "continent"],
-      "expectsText": false
-    },
-    {
-      "id": "memphis-postcard",
-      "name": "Memphis Postcard",
-      "tagline": "1985 group geometry on a souvenir",
-      "group": "pop-surfaces",
-      "description": "Memphis Group geometric exuberance, structured as a 5×7 postcard composition. Bold primaries against black.",
-      "palette": ["#0a0a0a", "#e6202b", "#fbcc28", "#1c4ee2", "#22a55a", "#ff6fa8"],
-      "references": [
-        "Ettore Sottsass + the Memphis Group, Milan 1981–87",
-        "Nathalie Du Pasquier — textile designs",
-        "Karel Martens — Werkplaats Typografie covers"
-      ],
-      "prompt": "A souvenir postcard of {location} rendered in the Memphis Group visual language: 1985 Milan, Ettore Sottsass and Nathalie Du Pasquier. Geometric chaos with discipline — squiggles, grids, dots, irregular shapes. Bold primary palette: red, yellow, cobalt, kelly green, pink, on black or cream. Flat shapes, no rendering, no perspective on the subject itself. Composition rules: postcard 5:7 portrait, the location as the main motif but stylized into Memphis vocabulary, decorative border patterns at top and bottom. Cheerful, exuberant, mid-80s.",
-      "negativeHints": ["3D rendering", "perspective", "muted colors"],
-      "bestZoomLevels": ["district", "city", "region"],
-      "expectsText": false
+      "expectsText": false,
+      "verification": "curation-only"
     },
     {
       "id": "ghibli-6am",
@@ -173,13 +58,182 @@
         "Kazuo Oga — Art of My Neighbor Totoro",
         "Hayao Miyazaki — watercolor concept art"
       ],
-      "prompt": "A painterly background scene of {location} at 6am — pre-dawn light, mist on the ground. Studio Ghibli background art tradition: Kazuo Oga, Mononoke, Spirited Away. Cool blue-green sky with soft pink cloud edges, warm umber in foreground silhouettes, cream-toned mist between layers. A single tiny saturated red detail somewhere — a torii, a mailbox, a flower — that anchors the eye. Hand-painted gouache and watercolor texture. No characters visible. No text. The scene feels held, breathing, just before the day starts.",
+      "prompt": "A painterly background scene of {location} at 6am — pre-dawn light, mist on the ground. No characters, no people, no high-noon light. Studio Ghibli background art tradition: Kazuo Oga, Mononoke, Spirited Away. Cool blue-green sky with soft pink cloud edges, warm umber in foreground silhouettes, cream-toned mist between layers. A single tiny saturated red detail somewhere — a torii, a mailbox, a flower — that anchors the eye. Hand-painted gouache and watercolor texture. The scene feels held, breathing, just before the day starts.",
       "negativeHints": ["characters", "people", "high-noon light"],
       "bestZoomLevels": ["district", "city", "region"],
-      "expectsText": false
+      "expectsText": false,
+      "verification": "curation-only"
+    },
+    {
+      "id": "shan-shui",
+      "name": "Shan Shui",
+      "tagline": "mountain-water ink, distance receding",
+      "group": "atmospheres",
+      "description": "The Chinese ink-landscape tradition — mountain and water in receding washes, vast negative space. Renders any place as if seen from a Song-dynasty hand scroll.",
+      "palette": ["#1a1a1a", "#5b6770", "#9aa3a8", "#e8e1cf", "#a36a3e"],
+      "references": [
+        "Fan Kuan — Travelers Among Mountains and Streams (~1000 CE)",
+        "Guo Xi — Early Spring (1072), Northern Song landscape theory",
+        "Liu Dan — contemporary ink landscapes"
+      ],
+      "prompt": "A Chinese shan shui ink landscape of {location}, in the tradition of Fan Kuan and Guo Xi. Sumi ink on aged silk: deep saturated black for nearest ridges, mid-grey washes for middle distance, faint ghosted pale grey for the farthest mountains. Vast unpainted silk between picture planes, the negative space carrying the scale. A single small detail in earth-red ink — a roof, a figure, a seal — placed where the eye needs to rest. No outlines, no flat fills, no perspective grid; depth comes from value and ink density only. Brushwork visible: dry brush on rock, wet brush on water. Calm, reverent, ancient.",
+      "negativeHints": ["perspective grid", "flat color fill", "modern outlines"],
+      "bestZoomLevels": ["region", "country", "continent"],
+      "expectsText": false,
+      "verification": "curation-only"
+    },
+    {
+      "id": "paris-1924",
+      "name": "Paris 1924",
+      "tagline": "observed from a café",
+      "group": "compositions",
+      "description": "Single-pen ink wash with one signal-color accent and generous white space. The aesthetic of a Saul Steinberg New Yorker cover translated to a place.",
+      "palette": ["#fafaf2", "#0c0c0c", "#aaaaaa", "#c8201f"],
+      "references": [
+        "Saul Steinberg — The View of the World from 9th Avenue (1976)",
+        "George Grosz — ink-and-watercolor street studies, Berlin 1920s",
+        "Jean-Jacques Sempé — Le Petit Nicolas covers"
+      ],
+      "prompt": "A pen-and-ink wash drawing of {location}, in the style of Saul Steinberg's New Yorker covers and George Grosz's 1920s Berlin sketches. No realistic detail, no filled background, no rendered textures. Loose hand-drawn ink linework with deliberate gaps. Single signal-red accent on one element only — sign, awning, vehicle. Cool grey ink wash for shadows. Generous ivory paper white around the subject. Composition: subject placed off-centre, the white space framing it. Wry, observed.",
+      "negativeHints": ["realistic detail", "filled background", "rendered textures"],
+      "bestZoomLevels": ["block", "district", "city", "region", "country"],
+      "expectsText": false,
+      "verification": "curation-only"
+    },
+    {
+      "id": "sosaku-hanga",
+      "name": "Sōsaku Hanga",
+      "tagline": "modernist Japanese woodblock",
+      "group": "compositions",
+      "description": "Distilled to color planes and air. The 20th-century creative print movement — closer to Hiroshi Yoshida than to Hokusai.",
+      "palette": ["#1f3a5f", "#c69b4c", "#0f0f0f", "#b62a26", "#f3e6c7"],
+      "references": [
+        "Hiroshi Yoshida — Sailing Boats (Morning), 1926",
+        "Kawase Hasui — Lake Misaka in Kai Province, 1931",
+        "Tatsuo Mitsuoka — post-war wood prints"
+      ],
+      "prompt": "A modernist Japanese woodblock print of {location}, in the tradition of Hiroshi Yoshida and Kawase Hasui — the sōsaku hanga creative-print movement. No black outlines on figures, no high-noon lighting. Limited mineral palette: indigo, ochre, sumi-black, single touch of vermilion, with cream paper showing through. Strong silhouettes, flat color planes, atmospheric depth from value not detail. Visible wood-grain texture in the pigment. Calm, slightly melancholy.",
+      "negativeHints": ["outlines on figures", "high-noon lighting", "photo realism"],
+      "bestZoomLevels": ["district", "city", "region", "country"],
+      "expectsText": false,
+      "verification": "curation-only"
+    },
+    {
+      "id": "gouache-field-guide",
+      "name": "Gouache Field Guide",
+      "tagline": "Audubon catalogue plate",
+      "group": "documents",
+      "description": "Flat opaque gouache illustration of a place treated as a specimen. Indicated label-marks and ruled grid lines — the look of an Audubon plate without the readable text.",
+      "palette": ["#ede2c4", "#3d4754", "#5e7a4a", "#a06432", "#c9a85c", "#c43d3d"],
+      "references": [
+        "John James Audubon — Birds of America plates (1827–38)",
+        "Ernst Haeckel — Kunstformen der Natur (1904)",
+        "Beatrix Potter — scientific illustrations of fungi"
+      ],
+      "prompt": "A 19th-century field-guide plate illustration of {location}, treated as a natural specimen. No photographic realism, no neon colors, no readable modern type. Flat opaque gouache, hand-painted detail without photographic shading. Three or four short ink-mark *positions* arranged around the subject like an Audubon plate — indicated label-marks, never spelled words. Faint ruled grid lines and a single decorative border. Cream aged-paper background with slight foxing at edges. Palette of muted earth tones with one bright accent on a single feature. Subject centred, framed by negative cream. Calm, observed, scholarly.",
+      "negativeHints": ["photographic realism", "modern type", "readable lettering", "neon colors"],
+      "bestZoomLevels": ["block", "district", "city"],
+      "expectsText": false,
+      "verification": "curation-only"
+    },
+    {
+      "id": "polaroid-diary",
+      "name": "Polaroid Diary",
+      "tagline": "underexposed instant film, single warm light",
+      "group": "documents",
+      "description": "A single instant-film frame, slightly underexposed, white border intact. The aesthetic of a personal travel journal.",
+      "palette": ["#0e0d12", "#e7a35a", "#b85a7a", "#ece5d4"],
+      "references": [
+        "Wim Wenders — Instant Stories (2017) Polaroid catalogue",
+        "William Eggleston — dye-transfer color (in spirit)",
+        "Stephen Shore — Uncommon Places"
+      ],
+      "prompt": "A single Polaroid SX-70 photograph of {location}, slightly underexposed. No sharp focus, no high-noon light, no multiple light sources. The classic white SX-70 border framing the image, with very subtle patina. Dominant darkness; one warm amber light source illuminating one element. Shadows hold blue-black, highlights faded toward magenta — the look of dye-instability in old Polaroids. Casual but deliberate framing, slightly off-balance. The whole image reads as a quiet evening moment. Soft focus.",
+      "negativeHints": ["sharp focus", "high noon", "many light sources"],
+      "bestZoomLevels": ["block", "district", "city"],
+      "expectsText": false,
+      "verification": "curation-only"
+    },
+    {
+      "id": "indigo-cyanotype",
+      "name": "Indigo Cyanotype",
+      "tagline": "Anna Atkins blueprint, place as botanical specimen",
+      "group": "documents",
+      "description": "Cyanotype contact print. Pure Prussian blue against unbleached paper white. Botanical-specimen energy applied to any place.",
+      "palette": ["#0e2a52", "#f3eddc"],
+      "references": [
+        "Anna Atkins — Photographs of British Algae: Cyanotype Impressions (1843)",
+        "Bertha E. Jaques — cyanotype botanicals",
+        "Christian Marclay — contemporary cyanotypes"
+      ],
+      "prompt": "A cyanotype contact print of {location}, in the manner of Anna Atkins' 1843 algae specimens. Two colors only: deep Prussian blue and paper white — no grayscale midtones, no other colors. The subject treated as if pressed flat against light-sensitive paper — botanical specimen energy applied to architecture or terrain. Visible brush strokes at edges of the chemistry, slight tonal unevenness. Pure silhouette where appropriate, fine line detail where the form demands it.",
+      "negativeHints": ["grayscale midtones", "color other than blue", "photographic gradient"],
+      "bestZoomLevels": ["block", "district", "city", "region", "country", "continent"],
+      "expectsText": false,
+      "verification": "curation-only"
+    },
+    {
+      "id": "risograph-civic",
+      "name": "Risograph Civic",
+      "tagline": "the indie press of municipal life",
+      "group": "pop-surfaces",
+      "description": "Two-color riso print, slightly mis-registered, dot-textured. The aesthetic of municipal pamphlets and arts-council posters.",
+      "palette": ["#ff48b0", "#0078bf", "#fffae8"],
+      "references": [
+        "Hato Press, London — risograph practice",
+        "Mike Perry — Wondering People posters",
+        "The Riso Club Tokyo prints"
+      ],
+      "prompt": "A two-color risograph print of {location}, fluoro pink and cyan only, on cream paper. No photographic detail, no perfect registration. Slightly mis-registered — the pink layer offset 1–2mm from the cyan. Visible dot-screen texture. Flat shapes, hand-drawn linework. The aesthetic of municipal arts-council pamphlets and indie publishing: friendly, slightly imperfect, civic. Bold composition, single focal subject. Slight imperfection in registration is desirable.",
+      "negativeHints": ["photographic detail", "perfect registration", "gradient shading"],
+      "bestZoomLevels": ["block", "district", "city", "region", "country"],
+      "expectsText": false,
+      "verification": "curation-only"
+    },
+    {
+      "id": "acid-topo",
+      "name": "Acid Topo",
+      "tagline": "USGS map remixed for a 1992 rave flyer",
+      "group": "pop-surfaces",
+      "description": "USGS topographic map crossed with acid-house color discipline. Contour lines as design language.",
+      "palette": ["#f4f1e8", "#a4ff00", "#ff0080", "#00d6ff", "#000000"],
+      "references": [
+        "USGS 7.5-minute topographic quadrangle maps (1960s)",
+        "The Designers Republic — early Warp Records covers",
+        "Aphex Twin — Selected Ambient Works II sleeve"
+      ],
+      "prompt": "A topographic map of {location} in the USGS quadrangle tradition, but recolored as a 1992 acid-house rave flyer. No perspective view, no natural colors. Off-white paper base. Electric chartreuse contour lines at regular intervals. Hot pink for any glyph-like marks (no real text). Cyan elevation shading in the lowest band. Black hatching for cliffs or built mass. Maintain the clinical precision of a real topographic map — gridlines, scale-bar mark at edge, neat margins. Top-down map view only. The aesthetic clash of bureaucratic cartography against rave color is the point.",
+      "negativeHints": ["real text", "perspective view", "natural colors"],
+      "bestZoomLevels": ["city", "region", "country", "continent"],
+      "expectsText": false,
+      "verification": "curation-only"
     }
   ],
   "alternates": [
+    {
+      "id": "mughal-miniature",
+      "name": "Mughal Miniature",
+      "tagline": "17th-century court painting, jewel palette",
+      "group": "documents",
+      "description": "Indo-Persian court painting tradition. Hierarchical scale, gold-leaf accents, jewel-tone pigments, terraced architecture. Treats a place as if catalogued by an imperial atelier.",
+      "references": [
+        "Akbarnama miniatures, c. 1590s — Mughal court atelier",
+        "Padshahnama, c. 1640s — Shah Jahan period",
+        "Bichitr — portrait miniatures, early 17th century"
+      ]
+    },
+    {
+      "id": "loteria",
+      "name": "Mexican Lotería",
+      "tagline": "place rendered as a chance-game card",
+      "group": "pop-surfaces",
+      "description": "The Mexican Lotería tradition: bold flat color, heavy black outlines, decorative card border, a single iconic motif filling the frame. Treats a place as if it were one of the 54 cards.",
+      "references": [
+        "Don Clemente Jacques Lotería — first published cards (1887)",
+        "Mexican calavera and woodcut traditions — José Guadalupe Posada",
+        "Contemporary loterías by Marcos Raya, Rafael López"
+      ]
+    },
     {
       "id": "manga-dust",
       "name": "Manga Dust",
@@ -203,6 +257,20 @@
         "Hélio Oiticica",
         "Tropicália album covers (1968–72)"
       ]
+    },
+    {
+      "id": "memphis-postcard",
+      "name": "Memphis Postcard",
+      "tagline": "1985 group geometry on a souvenir",
+      "group": "pop-surfaces",
+      "description": "Memphis Group geometric exuberance, structured as a 5×7 postcard composition. Bold primaries against black.",
+      "references": [
+        "Ettore Sottsass + the Memphis Group, Milan 1981–87",
+        "Nathalie Du Pasquier — textile designs",
+        "Karel Martens — Werkplaats Typografie covers"
+      ],
+      "demotedFrom": "core",
+      "demotionReason": "Lineage clusters tightly with Risograph Civic in Pop Surfaces (both bold flat-color print on cream). The reference set was already Italian-heavy. Demoted to alternates so it can return when the picker has room or when seasonal campaigns need it."
     }
   ]
 }

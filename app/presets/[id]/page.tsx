@@ -5,6 +5,8 @@ import { GROUPS, PRESETS, presetById } from '@/lib/presets';
 import { PaletteStrip } from '@/components/PaletteStrip';
 import { PromptBlock } from '@/components/PromptBlock';
 import { ReferenceList } from '@/components/ReferenceList';
+import { SampleGrid } from '@/components/SampleGrid';
+import { VerificationBadge } from '@/components/VerificationBadge';
 
 export function generateStaticParams() {
   return PRESETS.map((p) => ({ id: p.id }));
@@ -23,15 +25,6 @@ export async function generateMetadata({
     description: p.description,
   };
 }
-
-const ARCHETYPES = [
-  { key: 'ocean', label: 'Ocean tile', note: 'Empty water — tests negative space + composition.' },
-  { key: 'urban', label: 'Dense urban', note: 'Manhattan, Tokyo, Paris — tests detail discipline.' },
-  { key: 'mountain', label: 'Mountain', note: 'Atmospheric depth + scale.' },
-  { key: 'suburban', label: 'Suburban grid', note: 'Repetitive forms — tests composition rescue.' },
-  { key: 'desert', label: 'Desert', note: 'Minimalism — palette must hold against beige.' },
-  { key: 'polar', label: 'Polar', note: 'Near-monochrome — tests value handling.' },
-];
 
 export default async function PresetPage({
   params,
@@ -59,7 +52,18 @@ export default async function PresetPage({
       </Link>
 
       <header style={{ marginBottom: 'var(--sp-8)' }}>
-        <span className="label">{group?.label}</span>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 'var(--sp-3)',
+            flexWrap: 'wrap',
+          }}
+        >
+          <span className="label">{group?.label}</span>
+          <VerificationBadge status={preset.verification} />
+        </div>
         <h1 style={{ marginTop: 8 }}>{preset.name}</h1>
         <p
           style={{
@@ -130,31 +134,7 @@ export default async function PresetPage({
       </section>
 
       <section style={{ marginBottom: 'var(--sp-8)' }}>
-        <span className="label">test plan — six location archetypes</span>
-        <div className="grid-fit" style={{ marginTop: 8 }}>
-          {ARCHETYPES.map((a) => (
-            <div
-              key={a.key}
-              style={{
-                border: '1px solid var(--rule)',
-                borderRadius: 'var(--r-md)',
-                padding: 'var(--sp-4)',
-                background: 'var(--paper)',
-              }}
-            >
-              <div style={{ fontWeight: 500 }}>{a.label}</div>
-              <div
-                style={{
-                  fontSize: 'var(--fs-xs)',
-                  color: 'var(--ink-faint)',
-                  marginTop: 4,
-                }}
-              >
-                {a.note}
-              </div>
-            </div>
-          ))}
-        </div>
+        <SampleGrid presetId={preset.id} />
       </section>
 
       <section>
@@ -164,7 +144,22 @@ export default async function PresetPage({
           <dt>group</dt>
           <dd className="mono">{preset.group}</dd>
           <dt>best zooms</dt>
-          <dd className="mono">{preset.bestZoomLevels.join(' · ')}</dd>
+          <dd className="mono">
+            {preset.bestZoomLevels.join(' · ')}
+            {preset.verification !== 'fully-tested' && (
+              <span
+                style={{
+                  marginLeft: 8,
+                  fontSize: 'var(--fs-xs)',
+                  color: 'var(--warn)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.06em',
+                }}
+              >
+                provisional
+              </span>
+            )}
+          </dd>
           <dt>renders text</dt>
           <dd className="mono">{preset.expectsText ? 'yes' : 'no'}</dd>
         </dl>
