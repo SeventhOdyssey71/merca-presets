@@ -42,12 +42,18 @@ const SEED = 42;
 const MODEL = 'flux';
 
 function buildJobs() {
+  // Order: cell-major rather than preset-major. Walks every preset for the
+  // first cell before moving to the second. Result: after one full pass
+  // (~10 successful gens) every preset has at least one sample, instead of
+  // a few presets being full and the rest being empty.
   const jobs = [];
   for (const preset of data.presets) {
     const dir = path.join(ROOT, 'public', 'samples', preset.id);
     fs.mkdirSync(dir, { recursive: true });
-    for (const cell of STRATEGIC_CELLS) {
-      const out = path.join(dir, `${cell.archetype}-${cell.zoom}.jpg`);
+  }
+  for (const cell of STRATEGIC_CELLS) {
+    for (const preset of data.presets) {
+      const out = path.join(ROOT, 'public', 'samples', preset.id, `${cell.archetype}-${cell.zoom}.jpg`);
       if (fs.existsSync(out) && fs.statSync(out).size > 1000) continue;
       const filled = preset.prompt.replace('{location}', cell.location);
       const params = new URLSearchParams({
